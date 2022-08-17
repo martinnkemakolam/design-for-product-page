@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    #product{
+        background-color: lightblue;
+        padding: 2rem 1rem;
+        height: max-content;
+        width: fit-content;
+        display: grid;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+    .product_img{
+        width: fit-content;
+        height: max-content;
+        padding: 2rem;
+        background-color: black;
+        position: relative;
+    }
+    .product_img img{
+        width: 240px;
+        height: 490px;
+    }
+    .product_detail{
+        background-color: whitesmoke;
+        padding: 2rem;
+        width: 200px;
+        text-align: left;
+        cursor: pointer;
+    }
+    .product_detail section{
+        font-weight: 900;
+        margin: 0;
+        padding: 5px;
+    }
+    section h1{
+        margin: 0.5rem 0 .5rem 0 ;
+    }
+    section h2{
+        margin: 0.5rem 0 .5rem 0 ; 
+    }
+    section h4{
+        color: green;
+        text-transform: capitalize;
+        margin: 0 0 .2rem 0;
+    }
+    section article{
+        font-weight: 200;
+        color: #005;
+    }
+    article p{
+        margin: 1rem 0 2rem 0;
+        line-height: 25px;
+    }
+    article form{
+        line-height: 3rem;
+    }
+    article span{
+        margin-right: .5rem;
+    }
+    .qty{
+        background: white;
+        border: none;
+        border-radius: 5px;
+        width: 30px;
+    }
+    .btn{
+        border: none;
+        background-color: #004;
+        color: white;
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+    }
+    .size input:checked + span{
+        color: #005;
+        font-size: 20px;
+    }
+    .size input{
+        display: none;
+    }
+    .color span{
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+    .col1{
+        background: yellow;
+    }
+    .col2{
+        background: red;
+    }
+    .col3{
+        background: green;
+    }
+    .col4{
+        background: blue;
+    }
+    .color input{
+        display: none;
+    }
+    .color input:checked + span{
+        transform: scale(0.5);
+        box-shadow: 0 0 0 5px #fff, 0 0 0 6px #000;
+    }
+    .control{
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+    }
+    .bts{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #fff5;
+        margin-bottom: 1rem;
+    }
+    .bts.active{
+        background-color: #005;
+    }
+</style>
+<body>
+    <div id="product">
+        <span class="product_img_ctn">
+            <div class="product_img" >
+                <img src="/pic/gam.png" id="prod_img" alt="a nice shirt">
+                <div class="control">
+                    <div class="bts active"></div>
+                    <div class="bts" onclick="change()"></div>
+                    <div class="bts" ></div>
+                </div>
+            </div>
+        </span>
+        <span class="product_detail_ctn">
+            <div class="product_detail">
+                <section>
+                    <h1 class="prd_name">Casual T Shirt</h1>
+                    <h2 class="prd_price">$15.00</h2>
+                    <h4 class="prd_discount">30% off</h4>
+                    <article>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum deserunt facere officia vero, minima quibusdam!
+                        </p>
+                        <form action="">
+                            <div class="size">
+                                <span>Size</span>
+                                <label for="small"><input type="radio" name="Size" id="small"><span>S</span></label>
+                                <label for="meduim"><input type="radio" name="Size" id="meduim"><span>M</span></label>
+                                <label for="large"><input type="radio" name="Size" id="large"><span>L</span></label>
+                                <label for="x-large"><input type="radio" name="Size" id="x-large"><span>XL</span></label>
+                            </div>
+                            <div class="color">
+                                <span>Size</span>
+                                <label for="yellow"><input type="radio" name="color" id="yellow"><span class="col1"></span></label>
+                                <label for="red"><input type="radio" name="color" id="red"><span class="col2"></span></label>
+                                <label for="green"><input type="radio" name="color" id="green"><span class="col3"></span></label>
+                                <label for="blue"><input type="radio" name="color" id="blue"><span class="col4"></span></label>
+                            </div>
+                            
+
+                            <span>Quantity</span><input type="number" max="20" class="qty"><br>
+                            <input class="btn" type="submit" value="Buy Now">
+                        </form>
+                    </article>
+                </section>
+            </div>
+        </span>
+    </div>
+
+    <script>
+        let prod_img = document.getElementById('prod_img');
+        let button = document.getElementsByClassName('bts');
+
+        button[0].onclick = function(){
+            prod_img.src='pic/gam.png';
+            for(bt of button){
+                bt.classList.remove('active')
+            }
+            this.classList.add('active')
+        }
+        button[1].onclick = function(){
+            prod_img.src='pic/image2.jpg';
+            for(bt of button){
+                bt.classList.remove('active')
+            }
+            this.classList.add('active')
+        }
+        button[2].onclick = function(){
+            prod_img.src='pic/image1.jpg'
+
+            for(bt of button){
+                bt.classList.remove('active')
+            }
+            this.classList.add('active')
+        }
+    </script>
+</body>
+</html>
+
